@@ -1,0 +1,14 @@
+import { history } from 'marko-path-router';
+
+class {
+  push(){
+    history.push('/');
+  }
+}
+
+div
+  h1 -- ABOUT
+  router-link path="/" -- home
+  button on-click('push') -- push to home
+
+card title='about card'

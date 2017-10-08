@@ -1,0 +1,41 @@
+{
+  "name": "websters-development-environment",
+  "version": "0.1.0",
+  "description": "Simple devolpment environment using marko, lasso and less",
+  "main": "index.js",
+  "dependencies": {
+    "compression": "^1.7.1",
+    "express": "^4.15.5",
+    "lasso": "^2.11.16",
+    "lasso-less": "^2.4.7",
+    "lasso-marko": "^2.3.0",
+    "less": "^2.7.2",
+    "marko": "^4.4.28",
+    "marko-path-router": "^0.5.0",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0"
+  },
+  "devDependencies": {
+    "browser-refresh": "^1.7.2",
+    "browser-refresh-taglib": "^1.1.0",
+    "concurrently": "^3.5.0",
+    "lasso-cli": "^2.0.8",
+    "tslint": "^5.7.0",
+    "typescript": "^2.5.3"
+  },
+  "scripts": {
+    "build": "tsc --strict",
+    "start": "node server.js",
+    "debug": "concurrently \"tsc --strict --watch\" \"browser-refresh server.js\"",
+    "production": "NODE_ENV=production node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "marko",
+    "lasso",
+    "less",
+    "websters"
+  ],
+  "author": "Andreas Hochlehnert",
+  "license": "MIT"
+}

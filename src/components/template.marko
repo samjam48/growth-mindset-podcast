@@ -1,0 +1,55 @@
+import store from "../state/store";
+import routes from "../routes";
+import { getComponentByRoute, isInRoute } from "../helpers/get-component-by-route";
+import { Router } from "marko-path-router";
+
+class {
+  onCreate(input, out) {
+  }
+  onMount() {
+    const appComponent = this.getEl("app");
+
+    let initialRoute = "/";
+    if(window && window.location){
+      initialRoute = window.location.pathname;
+    }
+    console.log("initialRoute", initialRoute);
+
+    Router.render({
+      routes: routes,
+      initialRoute,
+      },
+      (err, result) => {
+        result.replaceChildrenOf(appComponent);
+      }
+    );
+    store.subscribe(() => {
+      this.forceUpdate();
+    });
+  }
+}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Websters Dev Environment</title>
+
+    <!-- CSS includes -->
+    <lasso-head/>
+  </head>
+  <body>
+    <!-- Top-level UI component: -->
+    <div no-update key="app">
+      <if(isInRoute(routes, input.initialRoute || "/"))>
+        <include(getComponentByRoute(routes, input.initialRoute || "/")) />
+      </if>
+      <else>
+          <include("./not-found") />
+      </else>
+    </div>
+    <!-- JS includes -->
+    <browser-refresh enabled="true" />
+    <lasso-body/>
+  </body>
+</html>

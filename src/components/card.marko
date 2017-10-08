@@ -1,0 +1,44 @@
+
+class {
+  onMount() {
+
+    console.log('cat shit')
+    if( this.input.content === 'loerm cat supem') {
+      console.log('cat shit fucntion is happening')
+    }
+  }
+}
+
+style.less {
+  .card-container {
+    background-color: @primaryColor;
+    border-radius: @default-border-radius;
+    overflow: hidden;
+    &:hover {
+      background-color: darken(@primaryColor, 10%);
+      box-shadow: 10px 10px 5px #888888;
+    }
+  }
+  .card {
+    background-color: @color1;
+
+//    border-radius: inherit;
+//    padding: 5px;
+    &:hover {
+      background-color: darken(@color1, 10%);
+    }
+  }
+  .button {
+    width: 100%;
+  }
+}
+
+
+div.card-container
+  div.card
+    h1 if(input.title) -- ${input.title}
+    p if(input.content) -- ${input.content}
+    -- ${console.log(input.button)}
+    button.button if(input.button) -- ${input.button}
+
+
